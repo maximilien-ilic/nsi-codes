@@ -20,20 +20,16 @@ abr1 = ABR(n0, 1, n2)
 
 
 def ajoute(cle, a):
-    b = ABR(None,None,None)
     if a == None:
-        b = ABR(None,cle,None)
-        return b 
+        return ABR(None, cle, None)
+    elif cle == a.cle:
+        return a
     else:
-        if a.cle > cle :
-                
-            resD = ajoute(cle, a.droit)
-            return res
+        if cle < a.cle:
+            return ABR(ajoute(cle, a.gauche), a.cle, a.droit)
         else:
+            return ABR(a.gauche, a.cle, ajoute(cle, a.droit))
             
-            resG = ajoute(cle,a.gauche)
-            return resG
-
 #------------EXERCICE 2---------------------------
 #-------algorithme glouton de mise en boite-------
 
